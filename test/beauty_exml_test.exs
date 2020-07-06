@@ -4,7 +4,12 @@ defmodule BeautyExmlTest do
   describe "format" do
     test "with simple xml" do
       xml = "<test><a>link</a></test>"
+      xml_2 = "<test><case>value</case><elem>yo</elem><value>string</value></test>"
       assert BeautyExml.format(xml) == {:ok, "<test>\n\t<a>link</a>\n</test>"}
+
+      assert BeautyExml.format(xml_2) ==
+               {:ok,
+                "<test>\n\t<case>value</case>\n\t<elem>yo</elem>\n\t<value>string</value>\n</test>"}
     end
 
     test "with instant_closing" do
@@ -15,11 +20,11 @@ defmodule BeautyExmlTest do
 
     test "with deeply nested" do
       xml =
-        ~S(<test><this><b>list</b></closing><is>a</is><closed/></this><after>this</after><current><type>boolean</type></current></test>)
+        ~S(<test><this><b>list</b><closing\/><is>a</is><closed/></this><after>this</after><current><type>boolean</type></current></test>)
 
       assert BeautyExml.format(xml) ==
                {:ok,
-                "\t<test>\n\t\t<this>\n\t\t\t<b>list</b>\n\t\t</closing>\n\t\t<is>a</is>\n\t<closed/>\n\t</this>\n\t<after>this</after>\n<current>\n\t<type>boolean</type>\n</current>\n</test>"}
+                "<test>\n\t<this>\n\t\t<b>list</b><closing\\/>\n\t\t<is>a</is>\n\t<closed/>\n\t</this>\n\t<after>this</after>\n\t<current>\n\t\t<type>boolean</type>\n\t</current>\n</test>"}
     end
 
     test "with xml encoding header" do
