@@ -1,9 +1,11 @@
 # BeautyExml
 
-**TODO: Add description**
+Simple xml formatter for adding tabs and new lines.
 
-## Installation
+## License
 
+MIT
+<!-- 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `beauty_exml` to your list of dependencies in `mix.exs`:
 
@@ -18,4 +20,4 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/beauty_exml](https://hexdocs.pm/beauty_exml).
-
+ -->
