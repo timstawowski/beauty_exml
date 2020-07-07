@@ -39,7 +39,7 @@ defmodule BeautyExml.Formatter do
           xml_content = {current_type_is?, xml_chunk <> previous_content, tabs}
           List.replace_at(acc, 0, xml_content)
 
-        previous_type_is? in [:closing, :instant_closing] and current_type_is? == :closing ->
+        previous_type_is? in [:closing] and current_type_is? in [:instant_closing, :closing] ->
           [{current_type_is?, xml_chunk, tabs + 1} | acc]
 
         true ->
