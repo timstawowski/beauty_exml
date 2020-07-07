@@ -6,12 +6,12 @@ defmodule BeautyExml do
   import BeautyExml.Formatter, only: [__beautify__: 1]
 
   @doc """
-  Add xml-binary to recieve it formatted or `:error` for by invalid input.
+  Add xml-binary to recieve it formatted.
 
   ## Examples
 
       format("<test><is>a</is><closed/></test>")
-      # {:ok, "<test>\\n\\t<is>a</is>\\n<closed/>\\n</test>"}
+      {:ok, "<test>\\n\\t<is>a</is>\\n<closed/>\\n</test>"}
   """
   @spec format(binary()) :: {:ok, binary()} | :error
   def format(xml_content) when is_binary(xml_content), do: __beautify__(xml_content)
